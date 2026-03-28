@@ -1,0 +1,185 @@
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Bricolage+Grotesque:wght@400;500;600;700;800&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --radius: 0.75rem;
+
+    /* Navy palette for dark theme */
+    --navy-950: 0.09 0.035 265;
+    --navy-900: 0.12 0.045 265;
+    --navy-800: 0.15 0.055 265;
+    --navy-700: 0.22 0.07 265;
+    --cyan-glow: 0.82 0.14 205;
+
+    /* Light mode (fallback) */
+    --background: 1 0 0;
+    --foreground: 0.145 0 0;
+    --card: 1 0 0;
+    --card-foreground: 0.145 0 0;
+    --popover: 1 0 0;
+    --popover-foreground: 0.145 0 0;
+    --primary: 0.52 0.25 275;
+    --primary-foreground: 0.985 0 0;
+    --secondary: 0.97 0 0;
+    --secondary-foreground: 0.205 0 0;
+    --muted: 0.97 0 0;
+    --muted-foreground: 0.556 0 0;
+    --accent: 0.82 0.14 205;
+    --accent-foreground: 0.09 0.035 265;
+    --destructive: 0.577 0.245 27.325;
+    --destructive-foreground: 0.985 0 0;
+    --border: 0.922 0 0;
+    --input: 0.922 0 0;
+    --ring: 0.52 0.25 275;
+    --chart-1: 0.52 0.25 275;
+    --chart-2: 0.55 0.22 255;
+    --chart-3: 0.82 0.14 205;
+    --chart-4: 0.828 0.189 84.429;
+    --chart-5: 0.769 0.188 70.08;
+    --sidebar: 0.985 0 0;
+    --sidebar-foreground: 0.145 0 0;
+    --sidebar-primary: 0.52 0.25 275;
+    --sidebar-primary-foreground: 0.985 0 0;
+    --sidebar-accent: 0.97 0 0;
+    --sidebar-accent-foreground: 0.205 0 0;
+    --sidebar-border: 0.922 0 0;
+    --sidebar-ring: 0.708 0 0;
+  }
+
+  .dark {
+    --background: 0.09 0.035 265;
+    --foreground: 0.94 0.02 265;
+    --card: 0.15 0.055 265;
+    --card-foreground: 0.94 0.02 265;
+    --popover: 0.17 0.06 265;
+    --popover-foreground: 0.94 0.02 265;
+    --primary: 0.52 0.25 275;
+    --primary-foreground: 0.985 0 0;
+    --secondary: 0.22 0.07 265;
+    --secondary-foreground: 0.94 0.02 265;
+    --muted: 0.2 0.06 265;
+    --muted-foreground: 0.7 0.05 265;
+    --accent: 0.82 0.14 205;
+    --accent-foreground: 0.09 0.035 265;
+    --destructive: 0.704 0.191 22.216;
+    --destructive-foreground: 0.985 0 0;
+    --border: 0.22 0.07 265;
+    --input: 0.22 0.07 265;
+    --ring: 0.52 0.25 275;
+    --chart-1: 0.52 0.25 275;
+    --chart-2: 0.55 0.22 255;
+    --chart-3: 0.82 0.14 205;
+    --chart-4: 0.69 0.17 200;
+    --chart-5: 0.645 0.246 16.439;
+    --sidebar: 0.12 0.045 265;
+    --sidebar-foreground: 0.94 0.02 265;
+    --sidebar-primary: 0.52 0.25 275;
+    --sidebar-primary-foreground: 0.985 0 0;
+    --sidebar-accent: 0.2 0.06 265;
+    --sidebar-accent-foreground: 0.94 0.02 265;
+    --sidebar-border: 0.22 0.07 265;
+    --sidebar-ring: 0.52 0.25 275;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    color-scheme: dark;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans;
+    background: linear-gradient(
+      180deg,
+      oklch(0.09 0.035 265) 0%,
+      oklch(0.11 0.04 265) 40%,
+      oklch(0.12 0.05 265) 100%
+    );
+    min-height: 100vh;
+  }
+}
+
+@layer utilities {
+  .gradient-text {
+    background: linear-gradient(
+      135deg,
+      oklch(0.65 0.25 275),
+      oklch(0.65 0.22 255),
+      oklch(0.72 0.2 310)
+    );
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-border {
+    position: relative;
+    background: oklch(0.15 0.055 265);
+    background-clip: padding-box;
+    border: 1px solid transparent;
+  }
+
+  .gradient-border::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    background: linear-gradient(
+      135deg,
+      oklch(0.52 0.25 275 / 0.5),
+      oklch(0.82 0.14 205 / 0.3)
+    );
+    z-index: -1;
+  }
+
+  .glow-btn {
+    background: linear-gradient(
+      135deg,
+      oklch(0.52 0.25 275),
+      oklch(0.55 0.22 255),
+      oklch(0.72 0.2 310)
+    );
+    box-shadow: 0 0 20px oklch(0.55 0.22 255 / 0.5), 0 0 40px
+      oklch(0.52 0.25 275 / 0.3);
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+  }
+
+  .glow-btn:hover {
+    box-shadow: 0 0 30px oklch(0.55 0.22 255 / 0.7), 0 0 60px
+      oklch(0.52 0.25 275 / 0.5);
+    transform: translateY(-1px);
+  }
+
+  .card-glass {
+    background: oklch(0.15 0.055 265 / 0.8);
+    border: 1px solid oklch(0.22 0.07 265);
+    backdrop-filter: blur(12px);
+  }
+
+  .card-glass-hover:hover {
+    border-color: oklch(0.82 0.14 205 / 0.4);
+    box-shadow: 0 0 20px oklch(0.82 0.14 205 / 0.1);
+  }
+
+  .star-twinkle {
+    animation: twinkle 3s ease-in-out infinite;
+  }
+}
+
+@keyframes twinkle {
+  0%,
+  100% {
+    opacity: var(--star-opacity, 0.4);
+    transform: scale(1);
+  }
+  50% {
+    opacity: calc(var(--star-opacity, 0.4) * 0.3);
+    transform: scale(0.8);
+  }
+}
